@@ -8,6 +8,6 @@ namespace SeoulStay.Repositories.UserRepository
 {
     public interface IUserRepository
     {
-        Task<string> PostUser(string url, string json);
+        HttpResponseMessage PostUser(string url, string json);
     }
 }

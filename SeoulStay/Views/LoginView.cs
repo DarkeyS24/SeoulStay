@@ -14,10 +14,11 @@ namespace SeoulStay.Views
 {
     public partial class LoginView : Form
     {
-        private User? user;
+        private User user;
         public LoginView()
         {
             InitializeComponent();
+            user = new User();
         }
 
         private void ShowPassword_CheckedChanged(object sender, EventArgs e)

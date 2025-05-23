@@ -17,10 +17,9 @@ namespace SeoulStay.Repositories.UserRepository
             httpClient.BaseAddress = new Uri("http://localhost:7047/api/Users/");
         }
 
-        public async Task<string> PostUser(string url, string json)
+        public HttpResponseMessage PostUser(string url, string json)
         {
-            var str = await httpClient.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-            return str.Content.ReadAsStringAsync().Result;
+            return httpClient.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json")).Result;
         }
     }
 }

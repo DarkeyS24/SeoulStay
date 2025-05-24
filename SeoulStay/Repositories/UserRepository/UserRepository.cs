@@ -14,12 +14,21 @@ namespace SeoulStay.Repositories.UserRepository
         public UserRepository()
         {
             httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("http://localhost:7047/api/Users/");
+            httpClient.BaseAddress = new Uri("https://localhost:7047/api/Users/");
         }
 
-        public HttpResponseMessage PostUser(string url, string json)
+        public string PostUser(string url, string json)
         {
-            return httpClient.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+            var response = httpClient.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
+            if (response.Result.IsSuccessStatusCode)
+            {
+                return "Yes";
+            }
+            else
+            {
+                return "No";
+            }
         }
     }
 }
+    

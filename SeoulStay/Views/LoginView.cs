@@ -39,17 +39,24 @@ namespace SeoulStay.Views
         private void OnClickToLogin(object sender, EventArgs e)
         {
             var result = setUsername();
-            MessageBox.Show("hola");
 
             if (result == 1)
             {
-                ManagementView managementView = new ManagementView();
-                managementView.Visible = true;
-
-            }else if (result == 0)
+                ManagementView? managementView = this.Controls.OfType<ManagementView>().FirstOrDefault();
+                if (managementView != null)
+                {
+                    managementView.setType(1);
+                    managementView.Visible = true;
+                }
+            }
+            else if (result == 0)
             {
-                ManagementView managementView = new ManagementView();
-                managementView.Visible = true;
+                ManagementView? managementView = this.Controls.OfType<ManagementView>().FirstOrDefault();
+                if (managementView != null)
+                {
+                    managementView.setType(0);
+                    managementView.Visible = true;
+                }
             }
             else
             {
@@ -65,7 +72,7 @@ namespace SeoulStay.Views
             {
                 user.Username = empTxt.Text;
                 setPassword();
-                if (UserController.PostUser("PostUser",user) == "Yes")
+                if (UserController.PostUser("PostUser", user) == "Yes")
                 {
                     return 1;
                 }
@@ -79,10 +86,7 @@ namespace SeoulStay.Views
                     return 0;
                 }
             }
-            else
-            {
-                MessageBox.Show("Invalid User!");
-            }
+
             return -1;
         }
 
@@ -96,6 +100,19 @@ namespace SeoulStay.Views
             {
                 MessageBox.Show("Please enter your password!");
                 return;
+            }
+        }
+
+        private void LoadManagementView(object sender, EventArgs e)
+        {
+            var mamanagementView = (ManagementView)sender;
+            if (mamanagementView != null)
+            {
+                mamanagementView.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Management view not found!");
             }
         }
     }

@@ -46,6 +46,7 @@ namespace SeoulStay.Views
             button2 = new Button();
             label5 = new Label();
             linkLabel1 = new LinkLabel();
+            managementView1 = new ManagementView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -216,12 +217,22 @@ namespace SeoulStay.Views
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Create one";
             // 
+            // managementView1
+            // 
+            managementView1.BackColor = Color.White;
+            managementView1.Location = new Point(2, -7);
+            managementView1.Name = "managementView1";
+            managementView1.Size = new Size(980, 637);
+            managementView1.TabIndex = 7;
+            managementView1.Load += LoadManagementView;
+            // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(982, 623);
+            Controls.Add(managementView1);
             Controls.Add(linkLabel1);
             Controls.Add(label5);
             Controls.Add(button2);
@@ -230,7 +241,7 @@ namespace SeoulStay.Views
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Name = "LoginView";
-            Text = "Seoul Stay - Welcome";
+            Text = "Seoul Stay";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -255,5 +266,6 @@ namespace SeoulStay.Views
         private Button button2;
         private Label label5;
         private LinkLabel linkLabel1;
+        private ManagementView managementView1;
     }
 }
